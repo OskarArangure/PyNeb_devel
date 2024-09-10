@@ -73,6 +73,7 @@ class RedCorr(object):
         self._laws_dict['SM79 Gal'] = self._SM79_Gal
         self._laws_dict['G03 LMC'] = self._G03_LMC
         self._laws_dict['G03 SMC'] = self._G03_SMC
+        self._laws_dict['G24 SMC AVG'] = self._G24_SMC_AVG
         self._laws_dict['MCC99 FM90 LMC'] = self._MCC99_FM90_LMC
         self._laws_dict['F99-like'] = self._F99_like
         #self._laws_dict['F99-like IDL'] = self._F99_like_IDL
