@@ -333,7 +333,7 @@ class RedCorr(object):
         if ax is None:
             f, ax = plt.subplots()
         colors = ['r', 'g', 'b', 'y', 'm', 'c']
-        styles = ['-', '--', '-:', ':']
+        styles = ['-', '--', '-.', ':']
         if not pn.config.INSTALLED['plt']:
             pn.log_.error('matplotlib.pyplot not available for plotting', calling=self.calling)
         old_E_BV = self.E_BV
