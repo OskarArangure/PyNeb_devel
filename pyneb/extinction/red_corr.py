@@ -72,6 +72,7 @@ class RedCorr(object):
         self._laws_dict['K76'] = self._K76
         self._laws_dict['SM79 Gal'] = self._SM79_Gal
         self._laws_dict['G03 LMC'] = self._G03_LMC
+        self._laws_dict['G03 SMC'] = self._G03_SMC
         self._laws_dict['MCC99 FM90 LMC'] = self._MCC99_FM90_LMC
         self._laws_dict['F99-like'] = self._F99_like
         #self._laws_dict['F99-like IDL'] = self._F99_like_IDL
@@ -692,6 +693,27 @@ class RedCorr(object):
         x = 1e4 / np.asarray([wave]) # inv microns
 
         X_tab = np.loadtxt(ROOT_DIR + '/extinction/LMC_Gordon.txt')
+        Xx = self.R_V * np.interp(x, X_tab[:, 0], X_tab[:, 1])
+        return np.squeeze(Xx)
+
+    
+    def _G03_SMC(self, wave):
+        """
+        Extinction curve for the SMC
+        Gordon et al. (2003, ApJ, 594,279)
+        http://adsabs.harvard.edu/abs/2003ApJ...594..279G
+        
+        Comments:
+        Average curve for the SMC
+        R_V = 2.74
+
+        Scope: SMC
+        Range: 1200 through fIR   
+
+        """
+        x = 1e4 / np.asarray([wave]) # inv microns
+
+        X_tab = np.loadtxt(ROOT_DIR + '/extinction/SMC_Gordon.txt')
         Xx = self.R_V * np.interp(x, X_tab[:, 0], X_tab[:, 1])
         return np.squeeze(Xx)
     
