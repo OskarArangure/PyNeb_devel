@@ -695,7 +695,7 @@ class RedCorr(object):
         X_tab = np.loadtxt(ROOT_DIR + '/extinction/LMC_Gordon.txt')
         Xx = self.R_V * np.interp(x, X_tab[:, 0], X_tab[:, 1])
         return np.squeeze(Xx)
-
+    
     
     def _G03_SMC(self, wave):
         """
@@ -714,6 +714,27 @@ class RedCorr(object):
         x = 1e4 / np.asarray([wave]) # inv microns
 
         X_tab = np.loadtxt(ROOT_DIR + '/extinction/SMC_Gordon.txt')
+        Xx = self.R_V * np.interp(x, X_tab[:, 0], X_tab[:, 1])
+        return np.squeeze(Xx)
+
+    
+    def _G24_SMC_AVG(self, wave):
+        """
+        Extinction curve for the SMC
+        Gordon et al. (2024, ApJ, 970, 51)
+        http://adsabs.harvard.edu/abs/2024ApJ...970...51G
+        
+        Comments:
+        Average curve for the SMC
+        R_V = 3.02
+
+        Scope: SMC
+        Range: 1200 through fIR   
+
+        """
+        x = 1e4 / np.asarray([wave]) # inv microns
+
+        X_tab = np.loadtxt(ROOT_DIR + '/extinction/SMC_G24_AVG.txt')
         Xx = self.R_V * np.interp(x, X_tab[:, 0], X_tab[:, 1])
         return np.squeeze(Xx)
     
